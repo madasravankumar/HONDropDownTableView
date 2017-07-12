@@ -17,6 +17,7 @@
 		A6BA6C9B1DF381AA9AFDD4EBFF47A80A /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63720319BEE830862F8F94595F54086 /* ReplaceMe.swift */; };
 		A91998B8BBBF4659305B1C2B2CFB5300 /* Pods-HONDropDownTableView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF75CB9A9E7C3465243C40F27C3DA97 /* Pods-HONDropDownTableView_Tests-dummy.m */; };
 		B4BB093EF4F12F4984FC8826FFED37AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		CA6F02F31F165D8800B9DECD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */; };
 		CF5C0E8EC2733C1450A7E130A6C90BFD /* HONDropDownTableView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFC97DD29607170345012B858292CF /* HONDropDownTableView-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -35,9 +36,9 @@
 		03373A9C6E5A2D7D7228277AF10133E6 /* Pods-HONDropDownTableView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HONDropDownTableView_Example-dummy.m"; sourceTree = "<group>"; };
 		0C54528D0DCF1537A6D7D82298D05943 /* Pods-HONDropDownTableView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HONDropDownTableView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		162D78C04B42CA2A888A054072664F47 /* HONDropDownTableView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HONDropDownTableView.xcconfig; sourceTree = "<group>"; };
-		1BBFA4430AF224B669F9726285DB5064 /* Pods-HONDropDownTableView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HONDropDownTableView_Example.modulemap"; sourceTree = "<group>"; };
+		1BBFA4430AF224B669F9726285DB5064 /* Pods-HONDropDownTableView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HONDropDownTableView_Example.modulemap"; sourceTree = "<group>"; };
 		1CF75CB9A9E7C3465243C40F27C3DA97 /* Pods-HONDropDownTableView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HONDropDownTableView_Tests-dummy.m"; sourceTree = "<group>"; };
-		2A1B0850F2F63EC3C4D6C35DC7A9D585 /* Pods_HONDropDownTableView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HONDropDownTableView_Tests.framework; path = "Pods-HONDropDownTableView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A1B0850F2F63EC3C4D6C35DC7A9D585 /* Pods_HONDropDownTableView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HONDropDownTableView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343C080B46A0C9B4E539BE4F87389C5F /* Pods-HONDropDownTableView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HONDropDownTableView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		38EFC97DD29607170345012B858292CF /* HONDropDownTableView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HONDropDownTableView-dummy.m"; sourceTree = "<group>"; };
 		43C0A7915F09EC6163455A4BD04C6A4F /* HONDropDownTableView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HONDropDownTableView-umbrella.h"; sourceTree = "<group>"; };
@@ -48,17 +49,19 @@
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6BC10CB038F1FCBAA1DC90E98583B232 /* Pods-HONDropDownTableView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HONDropDownTableView_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		7968070BCDF6989AFE1D8F6D802815E4 /* Pods-HONDropDownTableView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HONDropDownTableView_Example-resources.sh"; sourceTree = "<group>"; };
-		81DAA3CF3948DA74E699EC7DEE8E52BF /* HONDropDownTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HONDropDownTableView.framework; path = HONDropDownTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		81DAA3CF3948DA74E699EC7DEE8E52BF /* HONDropDownTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HONDropDownTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94D0963D9BA8B25E9BC7FB0437D043F8 /* Pods-HONDropDownTableView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HONDropDownTableView_Tests-resources.sh"; sourceTree = "<group>"; };
-		A02B016336FF34376768325FD64A1509 /* Pods_HONDropDownTableView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HONDropDownTableView_Example.framework; path = "Pods-HONDropDownTableView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A43DF5CA554C2381A60A01139D479F4B /* Pods-HONDropDownTableView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-HONDropDownTableView_Tests.modulemap"; sourceTree = "<group>"; };
+		A02B016336FF34376768325FD64A1509 /* Pods_HONDropDownTableView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HONDropDownTableView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43DF5CA554C2381A60A01139D479F4B /* Pods-HONDropDownTableView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-HONDropDownTableView_Tests.modulemap"; sourceTree = "<group>"; };
 		A704D6A06942556E54A8E167C728D806 /* Pods-HONDropDownTableView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HONDropDownTableView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AB8F166EFA5BA4B9826DAE94EEF2A48E /* Pods-HONDropDownTableView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HONDropDownTableView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BCFD275CAD94EA3F7F044EEE6A7D9326 /* Pods-HONDropDownTableView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HONDropDownTableView_Example-frameworks.sh"; sourceTree = "<group>"; };
+		CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		D03E4E5C4A1FE27655C8E92D5F963060 /* HONDropDownTableView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HONDropDownTableView-prefix.pch"; sourceTree = "<group>"; };
 		D7F650898B8ECFA0EFDAC597BDE9686B /* Pods-HONDropDownTableView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HONDropDownTableView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		D86A87C05BF7FD047372CFBE58EDEEA3 /* HONDropDownTableView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = HONDropDownTableView.modulemap; sourceTree = "<group>"; };
+		D86A87C05BF7FD047372CFBE58EDEEA3 /* HONDropDownTableView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HONDropDownTableView.modulemap; sourceTree = "<group>"; };
 		DBD251B44BE59F62D0A564450E796E8F /* Pods-HONDropDownTableView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HONDropDownTableView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E63720319BEE830862F8F94595F54086 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		EF76D7E8F91925C14488AD01E40676AD /* HONDropDownTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HONDropDownTableViewController.swift; sourceTree = "<group>"; };
@@ -213,7 +216,6 @@
 			children = (
 				FDA4FE2983FF9FAE774F04740CACD16B /* Classes */,
 			);
-			name = HONDropDownTableView;
 			path = HONDropDownTableView;
 			sourceTree = "<group>";
 		};
@@ -221,9 +223,10 @@
 			isa = PBXGroup;
 			children = (
 				EF76D7E8F91925C14488AD01E40676AD /* HONDropDownTableViewController.swift */,
+				CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */,
+				CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */,
 				E63720319BEE830862F8F94595F54086 /* ReplaceMe.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C0E8EC2733C1450A7E130A6C90BFD /* HONDropDownTableView-dummy.m in Sources */,
+				CA6F02F31F165D8800B9DECD /* SwitchTableViewCell.swift in Sources */,
 				5A344718CB71000F8E987F4064310474 /* HONDropDownTableViewController.swift in Sources */,
 				A6BA6C9B1DF381AA9AFDD4EBFF47A80A /* ReplaceMe.swift in Sources */,
 			);

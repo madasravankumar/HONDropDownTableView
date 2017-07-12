@@ -8,9 +8,13 @@
 
 import UIKit
 
-class HONDropDownTableViewController: UITableViewController {
 
-    override func viewDidLoad() {
+public class HONDropDownTableViewController: UITableViewController {
+
+    var dataSourceArray: [AnyObject]?
+    let cellReuseIdentifier = "SwitchReuseIdentifier"
+
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -18,34 +22,65 @@ class HONDropDownTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        dataSourceArray = ["Cell-1" as AnyObject,"Cell 2" as AnyObject,"Cell 3" as AnyObject]
+        registerNibs()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+     fileprivate func registerNibs() {
+        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        let podBundle = Bundle.init(for: self.classForCoder)
+        
+        if let bundleURL = podBundle.url(forResource: "HONDropDownTableView", withExtension: "bundle") {
+            
+            if let bundle = Bundle.init(url: bundleURL) {
+                
+                tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: bundle), forCellReuseIdentifier: cellReuseIdentifier)
+                
+            }else {
+                
+                assertionFailure("Could not load the bundle")
+                
+            }
+            
+        }else {
+            
+            assertionFailure("Could not create a path to the bundle")
+            
+        }
+    }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override public func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        let defaultRows = 0
+        if let count = dataSourceArray?.count {
+            return count
+        }
+        return defaultRows
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    
+    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! SwitchTableViewCell
+        let object = dataSourceArray?[indexPath.row] as! String
+        cell.lblCell.text = object
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
