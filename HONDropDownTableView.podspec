@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HONDropDownTableView'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'This library can be used to show the drop down menu table view like android popup'
   s.platform = :ios
 
