@@ -32,10 +32,10 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'HONDropDownTableView/Classes/**/*'
+  s.source_files = 'HONDropDownTableView/Classes/**/*.{swift}'
 
    s.resource_bundles = {
-     'HONDropDownTableView' => ['HONDropDownTableView/Assets/*.png','Pod/**/*.xib']
+    'HONDropDownTableView' => ['HONDropDownTableView/Classes/**/*.{xib}']
     }
 }
   # s.public_header_files = 'Pod/Classes/**/*.h'
