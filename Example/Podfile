@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'HONDropDownTableView_Example' do
+  pod 'HONDropDownTableView', :path => '../'
+
+  target 'HONDropDownTableView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
