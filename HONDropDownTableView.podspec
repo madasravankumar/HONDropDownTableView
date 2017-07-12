@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'HONDropDownTableView'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of HONDropDownTableView.'
+  s.summary          = 'This library can be used to show the drop down menu table view like android popup'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
+  s.description      = <<This component can be shows the menu options in table view. By using closures and protocols user get notfified when user tapped table view row -DESC
 TODO: Add long description of the pod here.
                        DESC
 

@@ -1,0 +1,16 @@
+PODS:
+  - HONDropDownTableView (0.1.0)
+
+DEPENDENCIES:
+  - HONDropDownTableView (from `../`)
+
+EXTERNAL SOURCES:
+  HONDropDownTableView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HONDropDownTableView: e29da59d2d55abd6af369bad080b9adcf6ea2cf8
+
+PODFILE CHECKSUM: 0bd963ee3632a2b399c702dd2e0721988b7ea1f8
+
+COCOAPODS: 1.2.1

@@ -1,0 +1,22 @@
+{
+  "name": "HONDropDownTableView",
+  "version": "0.1.0",
+  "summary": "A short description of HONDropDownTableView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/sravankumar143/HONDropDownTableView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "sravankumar143": "sravan.kumar2@honeywell.com"
+  },
+  "source": {
+    "git": "https://github.com/sravankumar143/HONDropDownTableView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "HONDropDownTableView/Classes/**/*"
+}
