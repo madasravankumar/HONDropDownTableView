@@ -18,6 +18,7 @@
 		A91998B8BBBF4659305B1C2B2CFB5300 /* Pods-HONDropDownTableView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF75CB9A9E7C3465243C40F27C3DA97 /* Pods-HONDropDownTableView_Tests-dummy.m */; };
 		B4BB093EF4F12F4984FC8826FFED37AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		CA6F02F31F165D8800B9DECD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */; };
+		CA6F02F51F16711F00B9DECD /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */; };
 		CF5C0E8EC2733C1450A7E130A6C90BFD /* HONDropDownTableView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFC97DD29607170345012B858292CF /* HONDropDownTableView-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +268,7 @@
 				DDE1336E4BB84C43DD5EEF702F4B4432 /* Sources */,
 				319C009BDAAEBDB5C09503F1274C6A0B /* Frameworks */,
 				6FF60C9A5BE9C245300D2D7873C22D9F /* Headers */,
+				CA6F02F41F16711700B9DECD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -339,6 +341,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA6F02F41F16711700B9DECD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA6F02F51F16711F00B9DECD /* SwitchTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		006B23A52C247C30937BDE7E6F8D09EE /* Sources */ = {

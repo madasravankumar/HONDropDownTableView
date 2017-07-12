@@ -33,25 +33,18 @@ public class HONDropDownTableViewController: UITableViewController {
 
      fileprivate func registerNibs() {
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
+        let podBundle = Bundle(for: HONDropDownTableViewController.self)
+        tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: podBundle), forCellReuseIdentifier: cellReuseIdentifier)
 
-        //let podBundle = Bundle(path: Bundle(for: HONDropDownTableViewController.self).path(forResource: "HONDropDownTableView", ofType: "bundle")!)
-
-       // let podBundle = Bundle(for: HONDropDownTableViewController.self)
-        
-//        let bundleArray = podBundle.loadNibNamed("SwitchTableViewCell", owner: nil, options: nil)?[0]
-        
-        //tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: podBundle), forCellReuseIdentifier: cellReuseIdentifier)
-        
-      /*  if let bundleURL = podBundle.url(forResource: "HONDropDownTableView", withExtension: "bundle") {
-            if let bundle = Bundle.init(url: bundleURL) {
-                tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: bundle), forCellReuseIdentifier: cellReuseIdentifier)
-            }else {
-                assertionFailure("Could not load the bundle")
-            }
-        }else {
-            assertionFailure("Could not create a path to the bundle")
-        }*/
+//        if let bundleURL = podBundle.url(forResource: "HONDropDownTableView", withExtension: "bundle") {
+//            if let bundle = Bundle.init(url: bundleURL) {
+//                tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: bundle), forCellReuseIdentifier: cellReuseIdentifier)
+//            }else {
+//                assertionFailure("Could not load the bundle")
+//            }
+//        }else {
+//            assertionFailure("Could not create a path to the bundle")
+//        }
     }
     
     
