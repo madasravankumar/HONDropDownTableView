@@ -17,7 +17,8 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<This component can be shows the menu options in table view. By using closures and protocols user get notfified when user tapped table view row -DESC
+  s.description      = <<-DESC This component can be shows the menu options in table view. By using closures and protocols user get notfified when user tapped table view row.DESC
+
 TODO: Add long description of the pod here.
                        DESC
 
@@ -28,10 +29,10 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/sravankumar143/HONDropDownTableView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'HONDropDownTableView/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'HONDropDownTableView' => ['HONDropDownTableView/Assets/*.png']
   # }
