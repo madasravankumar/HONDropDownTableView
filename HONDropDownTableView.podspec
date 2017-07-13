@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HONDropDownTableView'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'This library can be used to show the drop down menu table view like android popup'
   s.platform = :ios
 
@@ -37,8 +37,8 @@ Pod::Spec.new do |s|
    s.resource_bundles = {
     'HONDropDownTableView' => ['HONDropDownTableView/Classes/**/*.{xib}']
     }
-}
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+
+# s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
