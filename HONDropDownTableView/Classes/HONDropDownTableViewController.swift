@@ -8,22 +8,79 @@
 
 import UIKit
 
+public protocol HONDropDownTableViewControllerProtocol {
+    func didSelectTableViewTapped(index: Int)
+}
 
-public class HONDropDownTableViewController: UITableViewController {
+public typealias DidSelectTableViewRowClosure = (_ index: Int) -> Void
 
-    var dataSourceArray: [AnyObject]?
-    let cellReuseIdentifier = "SwitchReuseIdentifier"
+public class HONDropDownTableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    public var dataSourceArray: [String]?
+    public var dropDownDelegate: HONDropDownTableViewControllerProtocol?
+    public var separatorColor: UIColor = UIColor.lightGray
+    public var parentController: UIViewController?
+    public var cellBackgroundColor: UIColor?
+    public var didSelectedRow: DidSelectTableViewRowClosure?
+    public var cellSelectionStyle: UITableViewCellSelectionStyle = .none
+    
+    var tableViewCellType: Int = CustomCellType.Text.hashValue
+    
+    public enum CustomCellType {
+        case Text   //It loads text based Custom View (HONSwitchTableViewCell)
+        case TextImage      //It loads text and image based custom view (HONValue1TableViewCell)
+    }
+    
+    struct CellReuseIdetifers {
+        let cellReuseIdentifier = "SwitchReuseIdentifier"
+        let value1ReuseIdentifier = "Value1TableViewCell"
+    }
+    
+    /// it changes the table view background color
+    public var tableViewBackgroundColor: UIColor {
+        set {
+            self.tableView.backgroundColor = newValue
+        }
+        get {
+            return self.tableView.backgroundColor!
+        }
+    }
+    
+    lazy var tableView: UITableView = {
+        let dropDownTableView = UITableView(frame: .zero)
+        dropDownTableView.translatesAutoresizingMaskIntoConstraints = false
+        dropDownTableView.backgroundColor = UIColor.black
+        dropDownTableView.tableFooterView = UIView(frame: .zero)
+        dropDownTableView.separatorStyle = .none
+    
+        return dropDownTableView
+    }()
+    
+    //MARK:- Intilizers
+    
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    public init(withFrame: CGRect, parentController: UIViewController, cellStyle: CustomCellType) {
+        self.init()
+        self.parentController = parentController
+        self.parentController?.addChildViewController(self)
+        self.didMove(toParentViewController: self.parentController)
+        //view.frame = withFrame
+        setup(cellStyle: cellStyle)
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK:- View Life Cycle
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        dataSourceArray = ["Cell-1" as AnyObject,"Cell 2" as AnyObject,"Cell 3" as AnyObject]
-        registerNibs()
+        loadTableView()
     }
 
     override public func didReceiveMemoryWarning() {
@@ -31,94 +88,82 @@ public class HONDropDownTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-     fileprivate func registerNibs() {
-        tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        let podBundle = Bundle(for: HONDropDownTableViewController.self)
-        tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: podBundle), forCellReuseIdentifier: cellReuseIdentifier)
+    //MARK:- Private Methods
+    fileprivate func setup(cellStyle: CustomCellType) {
+        cellBackgroundColor = UIColor.clear
+        separatorColor = UIColor.lightGray
+        tableView.backgroundColor = UIColor.black
+        tableViewCellType = cellStyle.hashValue
 
-//        if let bundleURL = podBundle.url(forResource: "HONDropDownTableView", withExtension: "bundle") {
-//            if let bundle = Bundle.init(url: bundleURL) {
-//                tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: bundle), forCellReuseIdentifier: cellReuseIdentifier)
-//            }else {
-//                assertionFailure("Could not load the bundle")
-//            }
-//        }else {
-//            assertionFailure("Could not create a path to the bundle")
-//        }
+        let podBundle = Bundle(for: HONDropDownTableViewController.self)
+
+        if cellStyle == .Text {
+            tableView.register(HONSwitchTableViewCell.self, forCellReuseIdentifier: CellReuseIdetifers().cellReuseIdentifier)
+            tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: podBundle), forCellReuseIdentifier: CellReuseIdetifers().cellReuseIdentifier)
+        }else if cellStyle == .TextImage {
+            tableView.register(HONValue1TableViewCell.self, forCellReuseIdentifier: CellReuseIdetifers().value1ReuseIdentifier)
+            tableView.register(UINib(nibName: "Value1TableViewCell", bundle: podBundle), forCellReuseIdentifier: CellReuseIdetifers().value1ReuseIdentifier)
+        }
     }
     
+    /// This method can be used to reload the data from parent class
+    public func tableViewReloadData() {
+        tableView.reloadData()
+    }
     
-    // MARK: - Table view data source
-
-    override public func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+     /// It loads the tableview on top of the super view and setting constraints
+     fileprivate func loadTableView() {
+        
+        view.addSubview(tableView)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let leadingC = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1, constant: 0)
+        let topC = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
+        let bottomC = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: 0)
+        let trailingC = NSLayoutConstraint(item: self.view, attribute: .trailing, relatedBy: .equal, toItem: tableView, attribute: .trailing, multiplier: 1, constant: 0)
+        
+        view.addConstraints([leadingC,trailingC,bottomC,topC])
+    }
+    
+    //MARK:- UITableViewDataSource Methods
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-    override public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        let defaultRows = 0
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let count = dataSourceArray?.count {
             return count
         }
-        return defaultRows
-    }
-
-    
-    override public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! SwitchTableViewCell
-        let object = dataSourceArray?[indexPath.row] as! String
-        cell.lblCell.text = object
-
-        // Configure the cell...
-
-        return cell
+        return 0
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if tableViewCellType == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdetifers().cellReuseIdentifier, for: indexPath) as! HONSwitchTableViewCell
+            cell.lblText.text = dataSourceArray?[indexPath.row]
+            cell.lblLine.backgroundColor = separatorColor
+            cell.selectionStyle = cellSelectionStyle
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdetifers().value1ReuseIdentifier, for: indexPath) as! HONValue1TableViewCell
+            cell.lblTitle.text = dataSourceArray?[indexPath.row]
+           // cell.lblLine.backgroundColor = separatorColor
+            cell.selectionStyle = cellSelectionStyle
+            return cell
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if  let dropDelegate = dropDownDelegate?.didSelectTableViewTapped(index: indexPath.row) {
+            dropDelegate
+        }
+        
+        if let closureDelegate = didSelectedRow?(indexPath.row) {
+            return closureDelegate
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

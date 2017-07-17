@@ -17,8 +17,10 @@
 		A6BA6C9B1DF381AA9AFDD4EBFF47A80A /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63720319BEE830862F8F94595F54086 /* ReplaceMe.swift */; };
 		A91998B8BBBF4659305B1C2B2CFB5300 /* Pods-HONDropDownTableView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF75CB9A9E7C3465243C40F27C3DA97 /* Pods-HONDropDownTableView_Tests-dummy.m */; };
 		B4BB093EF4F12F4984FC8826FFED37AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		CA6F02F31F165D8800B9DECD /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */; };
-		CA6F02F81F1707F200B9DECD /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */; };
+		CA6F02F31F165D8800B9DECD /* HONSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F02F11F165D8800B9DECD /* HONSwitchTableViewCell.swift */; };
+		CA6F02F81F1707F200B9DECD /* HONSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6F02F21F165D8800B9DECD /* HONSwitchTableViewCell.xib */; };
+		CA6F02FB1F1C888000B9DECD /* HONValue1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6F02F91F1C888000B9DECD /* HONValue1TableViewCell.swift */; };
+		CA6F02FC1F1C888000B9DECD /* HONValue1TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6F02FA1F1C888000B9DECD /* HONValue1TableViewCell.xib */; };
 		CF5C0E8EC2733C1450A7E130A6C90BFD /* HONDropDownTableView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EFC97DD29607170345012B858292CF /* HONDropDownTableView-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -58,8 +60,10 @@
 		A704D6A06942556E54A8E167C728D806 /* Pods-HONDropDownTableView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HONDropDownTableView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AB8F166EFA5BA4B9826DAE94EEF2A48E /* Pods-HONDropDownTableView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HONDropDownTableView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BCFD275CAD94EA3F7F044EEE6A7D9326 /* Pods-HONDropDownTableView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HONDropDownTableView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
-		CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
+		CA6F02F11F165D8800B9DECD /* HONSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HONSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		CA6F02F21F165D8800B9DECD /* HONSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HONSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		CA6F02F91F1C888000B9DECD /* HONValue1TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HONValue1TableViewCell.swift; sourceTree = "<group>"; };
+		CA6F02FA1F1C888000B9DECD /* HONValue1TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HONValue1TableViewCell.xib; sourceTree = "<group>"; };
 		D03E4E5C4A1FE27655C8E92D5F963060 /* HONDropDownTableView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HONDropDownTableView-prefix.pch"; sourceTree = "<group>"; };
 		D7F650898B8ECFA0EFDAC597BDE9686B /* Pods-HONDropDownTableView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HONDropDownTableView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D86A87C05BF7FD047372CFBE58EDEEA3 /* HONDropDownTableView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HONDropDownTableView.modulemap; sourceTree = "<group>"; };
@@ -224,8 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				EF76D7E8F91925C14488AD01E40676AD /* HONDropDownTableViewController.swift */,
-				CA6F02F11F165D8800B9DECD /* SwitchTableViewCell.swift */,
-				CA6F02F21F165D8800B9DECD /* SwitchTableViewCell.xib */,
+				CA6F02F11F165D8800B9DECD /* HONSwitchTableViewCell.swift */,
+				CA6F02F21F165D8800B9DECD /* HONSwitchTableViewCell.xib */,
+				CA6F02F91F1C888000B9DECD /* HONValue1TableViewCell.swift */,
+				CA6F02FA1F1C888000B9DECD /* HONValue1TableViewCell.xib */,
 				E63720319BEE830862F8F94595F54086 /* ReplaceMe.swift */,
 			);
 			path = Classes;
@@ -347,7 +353,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6F02F81F1707F200B9DECD /* SwitchTableViewCell.xib in Resources */,
+				CA6F02F81F1707F200B9DECD /* HONSwitchTableViewCell.xib in Resources */,
+				CA6F02FC1F1C888000B9DECD /* HONValue1TableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +382,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF5C0E8EC2733C1450A7E130A6C90BFD /* HONDropDownTableView-dummy.m in Sources */,
-				CA6F02F31F165D8800B9DECD /* SwitchTableViewCell.swift in Sources */,
+				CA6F02FB1F1C888000B9DECD /* HONValue1TableViewCell.swift in Sources */,
+				CA6F02F31F165D8800B9DECD /* HONSwitchTableViewCell.swift in Sources */,
 				5A344718CB71000F8E987F4064310474 /* HONDropDownTableViewController.swift in Sources */,
 				A6BA6C9B1DF381AA9AFDD4EBFF47A80A /* ReplaceMe.swift in Sources */,
 			);

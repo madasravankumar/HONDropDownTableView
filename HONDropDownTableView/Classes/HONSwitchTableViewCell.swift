@@ -8,12 +8,15 @@
 
 import UIKit
 
-class SwitchTableViewCell: UITableViewCell {
+class HONSwitchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblCell: UILabel!
+    @IBOutlet weak var lblText: UILabel!
+    @IBOutlet weak var lblLine: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.clear
+        lblText.textColor = UIColor.white
         // Initialization code
     }
 
