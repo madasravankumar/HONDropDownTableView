@@ -19,36 +19,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3x-eK-RNq">
-                        <rect key="frame" x="8" y="0.0" width="304" height="43"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0q-4A-D09">
-                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
-                        <color key="backgroundColor" red="0.18823529410000001" green="0.70980392160000005" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="7VM-WE-IAc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="43.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="O3x-eK-RNq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7gb-I9-hzy"/>
-                    <constraint firstItem="d0q-4A-D09" firstAttribute="top" secondItem="O3x-eK-RNq" secondAttribute="bottom" id="TEa-Wp-qUM"/>
+                    <constraint firstAttribute="bottom" secondItem="O3x-eK-RNq" secondAttribute="bottom" id="gnj-u3-LwP"/>
                     <constraint firstItem="O3x-eK-RNq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vgq-pU-sD2"/>
                     <constraint firstAttribute="trailing" secondItem="O3x-eK-RNq" secondAttribute="trailing" constant="8" id="yua-84-0HS"/>
                 </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="d0q-4A-D09" secondAttribute="trailing" id="M4k-zz-gm6"/>
-                <constraint firstItem="d0q-4A-D09" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" id="adq-7j-kLS"/>
-                <constraint firstAttribute="bottom" secondItem="d0q-4A-D09" secondAttribute="bottom" id="qtO-CC-3eQ"/>
-            </constraints>
             <connections>
-                <outlet property="lblLine" destination="d0q-4A-D09" id="iPB-Ea-Xj9"/>
                 <outlet property="lblText" destination="O3x-eK-RNq" id="pkD-WR-doY"/>
             </connections>
         </tableViewCell>

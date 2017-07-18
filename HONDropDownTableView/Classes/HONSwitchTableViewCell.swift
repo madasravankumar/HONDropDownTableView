@@ -11,12 +11,10 @@ import UIKit
 class HONSwitchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblText: UILabel!
-    @IBOutlet weak var lblLine: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.clear
-        lblText.textColor = UIColor.white
+        lblText.adjustsFontSizeToFitWidth = true
         // Initialization code
     }
 
