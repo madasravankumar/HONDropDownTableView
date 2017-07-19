@@ -28,7 +28,7 @@
                                 </constraints>
                                 <state key="normal" title="Left Button"/>
                                 <connections>
-                                    <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XvB-TC-El7"/>
+                                    <action selector="button0TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0tA-Nv-qiT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqL-KJ-CI0">
@@ -36,9 +36,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5Df-FH-Ak5"/>
                                 </constraints>
-                                <state key="normal" title="Right Button"/>
+                                <state key="normal" title="Right Button">
+                                    <color key="titleColor" red="0.18823529410000001" green="0.70980392160000005" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ie6-MM-I8y"/>
+                                    <action selector="button1TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iOE-Fx-DgD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFg-PP-Mya">
@@ -48,7 +50,7 @@
                                 </constraints>
                                 <state key="normal" title="Bottom Right Button"/>
                                 <connections>
-                                    <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="f5x-Fe-WxN"/>
+                                    <action selector="button4TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3Vg-B3-YPl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csx-rZ-Vqa">
@@ -58,7 +60,7 @@
                                 </constraints>
                                 <state key="normal" title="Bottom Right Button"/>
                                 <connections>
-                                    <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5I0-vQ-yMq"/>
+                                    <action selector="button5TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="w6X-Y7-51z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjo-ax-pJ1">
@@ -68,25 +70,28 @@
                                 </constraints>
                                 <state key="normal" title="Center Button"/>
                                 <connections>
-                                    <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hCI-Mj-TcB"/>
+                                    <action selector="button2TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="htf-tc-OLP"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Tc-BMw">
-                                <rect key="frame" x="75" y="393" width="240" height="128"/>
+                                <rect key="frame" x="75" y="393" width="240" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6l-jh-0Ge">
-                                        <rect key="frame" x="97" y="49" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6l-jh-0Ge">
+                                        <rect key="frame" x="97" y="32" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="buttonTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kSu-42-nJf"/>
+                                            <action selector="button3TappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Zn0-L9-jeY"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="f6l-jh-0Ge" firstAttribute="centerX" secondItem="diH-Tc-BMw" secondAttribute="centerX" id="1rw-Vk-zqu"/>
+                                    <constraint firstItem="f6l-jh-0Ge" firstAttribute="centerY" secondItem="diH-Tc-BMw" secondAttribute="centerY" id="Y5O-zc-Gai"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WqL-KJ-CI0" secondAttribute="trailing" constant="8" id="GzF-ko-UJ9"/>
                             <constraint firstItem="diH-Tc-BMw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="59" id="HkC-Zs-vzl"/>
@@ -96,7 +101,7 @@
                             <constraint firstItem="tyG-Rv-8u2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="ahU-tI-4Jl"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Csx-rZ-Vqa" secondAttribute="bottom" constant="8" id="df3-8w-Fcl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="diH-Tc-BMw" secondAttribute="trailing" constant="44" id="faL-K0-igZ"/>
-                            <constraint firstAttribute="bottom" secondItem="diH-Tc-BMw" secondAttribute="bottom" constant="146" id="hOC-ad-OoM"/>
+                            <constraint firstAttribute="bottom" secondItem="diH-Tc-BMw" secondAttribute="bottom" constant="180" id="hOC-ad-OoM"/>
                             <constraint firstItem="tyG-Rv-8u2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="kPv-0e-6VY"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="TFg-PP-Mya" secondAttribute="bottom" constant="8" id="rj2-Pq-mP1"/>
                             <constraint firstItem="qjo-ax-pJ1" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sbe-gg-ojQ"/>
@@ -104,6 +109,14 @@
                             <constraint firstItem="WqL-KJ-CI0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="yHi-M2-RB3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button0" destination="tyG-Rv-8u2" id="m2r-JM-a4W"/>
+                        <outlet property="button1" destination="WqL-KJ-CI0" id="jCJ-ru-Q5y"/>
+                        <outlet property="button2" destination="qjo-ax-pJ1" id="IWx-Eo-C7N"/>
+                        <outlet property="button3" destination="f6l-jh-0Ge" id="EzU-Zc-Ewa"/>
+                        <outlet property="button4" destination="TFg-PP-Mya" id="vYT-3x-xRu"/>
+                        <outlet property="button5" destination="Csx-rZ-Vqa" id="rZi-BO-Isd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

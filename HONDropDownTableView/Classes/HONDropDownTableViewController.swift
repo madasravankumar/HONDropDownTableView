@@ -18,7 +18,8 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     
     public var dropDownDelegate: HONDropDownTableViewControllerProtocol?
     public var didSelectedRow: DidSelectTableViewRowClosure?
-
+    public var presentingView: UIView?
+    
     public var dataSourceArray = [String]() {
         didSet{tableViewReloadData()}
     }
@@ -36,7 +37,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         didSet{tableViewReloadData()}
     }
     
-    public var cellLblTextColor: UIColor = UIColor.black {
+    public var cellLblTextColor: UIColor = UIColor.white {
         didSet{tableViewReloadData()}
     }
     
@@ -50,24 +51,39 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         get {return tableViewBackgroundColor}
     }
     
-    public dynamic var cellHeight = 44 {
-        willSet { tableView.rowHeight = CGFloat(newValue) }
-        didSet { tableViewReloadData() }
-    }
-    
     public var separatorStyle: UITableViewCellSeparatorStyle = .none {
         willSet {tableView.separatorStyle = newValue}
         didSet {tableViewReloadData()}
     }
     
-    public var lblFont: UIFont = UIFont(name: "Helvetica Neue", size: 16)!
+    public var dropDownLayerColor: CGColor = UIColor(red: 48/255, green: 181/255, blue: 244/255, alpha: 1).cgColor {
+        willSet{self.layer.backgroundColor = newValue}
+    }
     
+    public var lblFont: UIFont = UIFont(name: "Helvetica Neue", size: 16)!
+    public var direction = DropDownDirection.bottom.rawValue
+
+    //MARK:- Private Properties
     private var parentView: UIView?
     private var tableViewCellType: Int = CustomCellType.Text.rawValue
+    private let dropDownLayerBoaderWidth = 1.5
+    private var existParentViewLayerColor: CGColor?
+    private var viewHeightConstraint: NSLayoutConstraint!
+    private var tableViewHeightConstraint: NSLayoutConstraint!
+    private dynamic var cellHeight = 36 {
+        willSet { tableView.rowHeight = CGFloat(newValue) }
+        didSet { tableViewReloadData() }
+    }
     
+    //MARK:- Class Enums
     public enum CustomCellType: Int {
         case Text = 1   //It loads text based Custom View (HONSwitchTableViewCell)
         case TextImage      //It loads text and image based custom view (HONValue1TableViewCell)
+    }
+    
+    public enum DropDownDirection: Int {
+        case top = 1
+        case bottom
     }
     
     struct CellReuseIdetifers {
@@ -101,9 +117,9 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     ///   - withFrame: frame of the table view
     ///   - parentController: parent view controller to show the tabel view
     ///   - cellStyle: pass the different types of styles.
-    public init(withFrame: CGRect, parentController: UIView, cellStyle: CustomCellType) {
+    public init(withFrame: CGRect, parentView: UIView, cellStyle: CustomCellType) {
         self.init()
-        self.parentView = parentController
+        self.parentView = parentView
         setup(cellStyle: cellStyle)
     }
 
@@ -144,6 +160,9 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     
      /// It loads the tableview on top of the super view and setting constraints
      fileprivate func loadTableView() {
+        self.layer.borderColor = dropDownLayerColor
+        self.layer.borderWidth = 2
+        self.layer.masksToBounds = true
         
         addSubview(tableView)
         
@@ -151,38 +170,70 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         tableView.dataSource = self
         tableView.layer.cornerRadius = 5.0
         
+        
         let leadingC = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
         let topC = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
-        let bottomC = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: 0)
+       // let bottomC = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: tableView, attribute: .bottom, multiplier: 1, constant: 0)
         let trailingC = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: tableView, attribute: .trailing, multiplier: 1, constant: 0)
-        
-        addConstraints([leadingC,trailingC,bottomC,topC])
+        tableViewHeightConstraint = NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: viewHeightConstraint.constant)
+        addConstraints([leadingC,tableViewHeightConstraint,trailingC,topC])
     }
     
     public func show() {
+        existParentViewLayerColor = parentView?.layer.borderColor
+        parentView?.layer.borderColor = dropDownLayerColor
+        parentView?.layer.borderWidth = CGFloat(dropDownLayerBoaderWidth)
+        parentView?.layer.masksToBounds = true
         
         self.translatesAutoresizingMaskIntoConstraints = false
 
         let leadingConstraint = NSLayoutConstraint(item: parentView!, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
-        var topConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: parentView!, attribute: .top, multiplier: 1, constant: parentView!.frame.size.height + 5)
+        var topConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: parentView!, attribute: .top, multiplier: 1, constant: parentView!.frame.size.height)
         let trailingConstraint = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: parentView!, attribute: .trailing, multiplier: 1, constant: 0)
-        let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
+        viewHeightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 0)
         
-        if parentView!.tag == 4 || parentView!.tag == 5 {
-            topConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: parentView!, attribute: .top, multiplier: 1, constant: 5)
+        if DropDownDirection.top.rawValue == direction {
+            topConstraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: parentView!, attribute: .top, multiplier: 1, constant:0)
+        }
+      
+        if let parentContr = self.presentingView {
+            parentContr.addSubview(self)
+            parentContr.bringSubview(toFront: self)
+            
+            parentContr.addConstraints([leadingConstraint, trailingConstraint, topConstraint, viewHeightConstraint])
+        }else {
+            let visibleWindow = UIWindow.visibleWindow()
+            visibleWindow?.addSubview(self)
+            visibleWindow?.bringSubview(toFront: self)
+            
+            visibleWindow?.addConstraints([leadingConstraint, trailingConstraint, topConstraint, viewHeightConstraint])
         }
         
-        let visibleWindow = UIWindow.visibleWindow()
-        visibleWindow?.addSubview(self)
-        visibleWindow?.bringSubview(toFront: self)
-       
-        visibleWindow?.addConstraints([leadingConstraint, trailingConstraint, topConstraint, heightConstraint])
-
-        //self.translatesAutoresizingMaskIntoConstraints = false
-        //visibleWindow?.addUniversalConstraints(format: "|[dropDown]|", views: ["dropDown": self])
         
         loadTableView()
-
+        perform(#selector(self.showAnimation), with: self, afterDelay: 0.3)
+        
+    }
+    
+    @objc private func showAnimation() {
+    
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+            
+            self.viewHeightConstraint.constant = 200
+            self.tableViewHeightConstraint.constant = 200
+            self.setNeedsLayout()
+            self.layoutIfNeeded()
+        })
+    }
+    
+    public func hideDropDown() {
+        if let layerColor = existParentViewLayerColor {
+            parentView?.layer.borderColor = layerColor
+        }
+        tableView.removeFromSuperview()
+        UIView.animate(withDuration: 0.5) { 
+            self.removeFromSuperview()
+        }
     }
     
     //MARK:- UITableViewDataSource Methods
@@ -224,7 +275,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     }
 }
 
-public extension UIWindow {
+internal extension UIWindow {
     
     static func visibleWindow() -> UIWindow? {
         var currentWindow = UIApplication.shared.keyWindow
@@ -248,15 +299,6 @@ internal extension UIView {
     
     var windowFrame: CGRect? {
         return superview?.convert(frame, to: nil)
-    }
-    
-    func addConstraints(format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics, views: views))
-    }
-    
-    func addUniversalConstraints(format: String, options: NSLayoutFormatOptions = [], metrics: [String: AnyObject]? = nil, views: [String: UIView]) {
-        addConstraints(format: "H:\(format)", options: options, metrics: metrics, views: views)
-        addConstraints(format: "V:\(format)", options: options, metrics: metrics, views: views)
     }
 }
 
