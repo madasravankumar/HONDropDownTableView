@@ -14,6 +14,7 @@ class HONSwitchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.clear
         lblText.adjustsFontSizeToFitWidth = true
         // Initialization code
     }

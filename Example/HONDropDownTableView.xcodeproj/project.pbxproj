@@ -215,11 +215,13 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 643G3RL44Z;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 643G3RL44Z;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -497,7 +499,8 @@
 			baseConfigurationReference = 2AE502EA1011A6D5F1D4BA24 /* Pods-HONDropDownTableView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 643G3RL44Z;
 				INFOPLIST_FILE = HONDropDownTableView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -514,7 +517,8 @@
 			baseConfigurationReference = C554EDD2A8AACE6FB3A3064D /* Pods-HONDropDownTableView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 643G3RL44Z;
 				INFOPLIST_FILE = HONDropDownTableView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -530,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8154097F57219261595A6F82 /* Pods-HONDropDownTableView_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 643G3RL44Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -550,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 966E84C48DC64CD0E3242C70 /* Pods-HONDropDownTableView_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 643G3RL44Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
