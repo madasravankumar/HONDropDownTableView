@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="HONDropDownTableView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="ViewController" customClass="ViewController" customModule="HONDropDownTableView_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -21,10 +21,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6b-HH-iDZ" customClass="HONTableView" customModule="HONDropDownTableView">
-                                <rect key="frame" x="67" y="75" width="240" height="44"/>
+                                <rect key="frame" x="67" y="75" width="240" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ffe-Gu-uQg"/>
+                                    <constraint firstAttribute="height" constant="32" id="ffe-Gu-uQg"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="heightConstraint" destination="ffe-Gu-uQg" id="UKF-BK-Lfr"/>
@@ -41,7 +41,11 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="titleButtonTextColor">
                                         <color key="value" red="0.27058823529999998" green="0.6588235294" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="defaultText" value="Recently Computed"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="noK-Dz-rfC"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

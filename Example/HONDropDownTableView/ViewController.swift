@@ -26,8 +26,11 @@ class ViewController: UIViewController {
         honTableView.menuArray = ["Recently Computed","ETD","Tail","Filing Status","Departure","Destination","Hidden Flight Plans"]
         honTableView.selectedItem = "Recently Computed"
         
-        customView.direction = 2
-        //customView.selectArrowImage = UIImage(named: "arrowup")!
+        customView.menuType = 1
+        customView.dataSourceArray = ["Recently Computed","ETD","Tail","Filing Status","Departure","Destination","Hidden Flight Plans"]
+        
+        //customView.selectArrowImage = UIImage(named: "arrowup")
+        //customView.selectedItem = "Recently Computed"
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,3 +53,9 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: HONButtonViewDelegate {
+    func dropDownView(_ dropDown: HONDropDownTableViewController, didSelectedItem item: String, atIndex index: Int) {
+        
+    }
+
+}

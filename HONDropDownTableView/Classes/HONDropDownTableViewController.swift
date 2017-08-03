@@ -26,6 +26,8 @@ public typealias DidSelectTableViewRowClosure = (_ index: Int) -> Void
 /// Class Implementation
 public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITableViewDelegate {
     
+    //MARK:- Public Variables
+    
     public var dropDownDelegate: HONDropDownTableViewControllerProtocol?
     public var didSelectedRow: DidSelectTableViewRowClosure?
   
@@ -41,7 +43,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     }
     
     /// Change the separator color of the table in runtime.
-    public var separatorColor: UIColor = UIColor.lightGray {
+    public var separatorColor: UIColor = UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1) {
         willSet{self.tableView.separatorColor = newValue}
         didSet{tableViewReloadData()}
     }
@@ -56,7 +58,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     }   // change the uitableviewcell selection style of the tableview in runtime.
     
     /// change the uitableviewcell title lable color of the tableview in runtime.
-    public var cellLblTextColor: UIColor = UIColor.white {
+    public var cellLblTextColor: UIColor = UIColor(red: 208/255, green: 208/255, blue: 208/255, alpha: 1) {
         didSet{tableViewReloadData()}
     }
     /// it changes the table view background color
@@ -81,10 +83,17 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         willSet{self.layer.backgroundColor = newValue.cgColor}
     }
     
+    public var isDropDownMenuPresent: Bool {
+        get {
+            return isViewShowing
+        }
+    }
+    
     public var lblFont: UIFont = UIFont(name: "Helvetica Neue", size: 16)!
     public var direction = DropDownDirection.bottom.rawValue
 
     //MARK:- Private Properties
+    private var disableView: UIView = UIView()
     private var parentView: UIView?
     private var tableViewCellType: Int = CustomCellType.Text.rawValue
     private let dropDownLayerBoaderWidth = 1.5
@@ -172,6 +181,8 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     /// this method can be used to add nslayout constraints to the uiview and table view.
     fileprivate func loadUIView() {
         
+        disableViewCreate()
+
         let leadingConstraint = NSLayoutConstraint(item: parentView!, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 0)
         var topConstraint = NSLayoutConstraint(item: parentView!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: CGFloat(dropDownLayerBoaderWidth))
         let trailingConstraint = NSLayoutConstraint(item: parentView!, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0)
@@ -196,6 +207,29 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         loadTableView()
     }
     
+    /// this method creates dummy view on top of the window to disable the other actions.
+    fileprivate func disableViewCreate() {
+        
+        disableView.translatesAutoresizingMaskIntoConstraints = false
+        disableView.backgroundColor = UIColor.clear
+        let visibleWindow = UIWindow.visibleWindow()
+        visibleWindow?.addSubview(disableView)
+        
+        let leadingConstraint = NSLayoutConstraint(item: disableView, attribute: .leading, relatedBy: .equal, toItem: visibleWindow, attribute: .leading, multiplier: 1, constant: 0)
+        let topConstraint = NSLayoutConstraint(item: disableView, attribute: .top, relatedBy: .equal, toItem: visibleWindow, attribute: .top, multiplier: 1, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: visibleWindow!, attribute: .trailing, relatedBy: .equal, toItem: disableView, attribute: .trailing, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: visibleWindow!, attribute: .bottom, relatedBy: .equal, toItem: disableView, attribute: .bottom, multiplier: 1, constant: 0)
+
+        visibleWindow?.addConstraints([leadingConstraint,topConstraint,trailingConstraint,bottomConstraint])
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissableViewTapped))
+        disableView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc fileprivate func dismissableViewTapped() {
+        hideDropDown()
+    }
+    
      /// It loads the tableview on top of the super view and setting constraints
      fileprivate func loadTableView() {
         
@@ -215,7 +249,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     /// this method can be used to show the menu tableview
     public func show() {
         
-        if isViewShowing == false {
+       // if isViewShowing == false {
             isViewShowing = true
             loadUIView()
             
@@ -224,14 +258,18 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
             parentView?.layer.borderColor = dropDownLayerColor.cgColor
             
             perform(#selector(self.showAnimation), with: self, afterDelay: 0.01)
-        }else {
-            hideDropDown()
-        }
+//        }else {
+//            hideDropDown()
+//        }
     
     }
     
     @objc private func showAnimation() {
-        self.viewBottomConstraint.constant = (self.parentView?.frame.size.height)!+150
+        var tableViewHeight = CGFloat(dataSourceArray.count * cellHeight)
+        if tableViewHeight > 180 {
+            tableViewHeight = 180
+        }
+        self.viewBottomConstraint.constant = tableViewHeight//(self.parentView?.frame.size.height)!+150
 
         UIView.animate(withDuration: 0.6, delay: 0.0, animations: {
             self.superview?.layoutIfNeeded()
@@ -255,6 +293,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
             }else {
                 self.parentView?.layer.borderColor = UIColor.clear.cgColor
             }
+            self.disableView.removeFromSuperview()
             self.tableView.removeFromSuperview()
             self.removeFromSuperview()
             self.isViewShowing = false
@@ -265,15 +304,7 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
         }
         
     }
-    
-    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, with: event)
-        if view == nil {
-            hideDropDown()
-        }
-        return view
-    }
-    
+
     fileprivate func setSelectedColor(dataSourceStr: String, cellForRow cell: HONSwitchTableViewCell) {
         if let selectedString = selectedItem {
             if selectedString == dataSourceStr {
@@ -314,9 +345,10 @@ public class HONDropDownTableViewController: UIView, UITableViewDataSource,UITab
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let dataSourceStr = dataSourceArray[indexPath.row]
         selectedItem = dataSourceStr
-        let cell: HONSwitchTableViewCell = tableView.cellForRow(at: indexPath) as! HONSwitchTableViewCell
-        setSelectedColor(dataSourceStr: dataSourceStr, cellForRow: cell)
-
+//        let cell: HONSwitchTableViewCell = tableView.cellForRow(at: indexPath) as! HONSwitchTableViewCell
+//        setSelectedColor(dataSourceStr: dataSourceStr, cellForRow: cell)
+//
+        tableView.reloadData()
         if  let dropDelegate = dropDownDelegate?.didSelectTableViewTapped(index: indexPath.row, selectedMenu: selectedItem!, dropDown: self) {
             hideDropDown()
             dropDelegate
